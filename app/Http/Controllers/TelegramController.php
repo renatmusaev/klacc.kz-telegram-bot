@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Language;
-use Illuminate\Http\Request;
 use Telegram\Bot\Keyboard\Keyboard;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
@@ -30,13 +29,20 @@ class TelegramController extends Controller
                 $this->output .= "Өзіңізге ыңғайлы қарым-қатынас тілін таңдаңыз!\r\n";
                 $this->output .= "Выберите удобный для вас язык общения!";
 
-                $language = Language::get();
+                // $language = Language::get();
 
-                foreach ($language as $key => $value) {
-                    $buttons[] = Keyboard::button(['text' => $value->name]);
-                }
+                // foreach ($language as $key => $value) {
+                //     $buttons[] = Keyboard::button(['text' => $value->name]);
+                // }
+
+                // $this->buttons = [$buttons];
+
+                $btn1 = Keyboard::button(['text' => 'Қазақша']);
+				$btn2 = Keyboard::button(['text' => 'На русском']);
                 
-                $this->buttons = [$buttons];
+                $this->buttons = [
+                    [$btn1, $btn2]
+                ];
 
                 $keyboard = Keyboard::make([
                     'keyboard' => $this->buttons,
@@ -51,8 +57,5 @@ class TelegramController extends Controller
                 ]);
             }
         }
-
-        $language = Language::get();
-        dd($language);
     }
 }
