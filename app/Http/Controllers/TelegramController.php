@@ -24,7 +24,7 @@ class TelegramController extends Controller
             $text = $bot['message']['text'];
 
             // START
-            if ($text == '/start' || $text == 'Артқа / Назад') {
+            if ($text == '/start') {
                 $this->output  = $this->title_kaz."\r\n".$this->title_rus;
                 $this->output .= "\r\n\r\n";
                 $this->output .= "Өзіңізге ыңғайлы қарым-қатынас тілін таңдаңыз!\r\n";
